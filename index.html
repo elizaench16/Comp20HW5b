@@ -1,0 +1,87 @@
+<!-- COMP 20 Fall 2020
+    HW 5 Quick Pick
+    Eliza Encherman 
+    
+    Acknowledgements: 
+    
+    W3School JS tutorial on arrays, array sort, and the split function-->
+
+
+<!DOCTYPE html>
+
+<html>
+
+<script>
+var numMatching = 0, winningLottoString, winningLuckyBall;
+
+var myLuckyBall = Math.floor(Math.random()*18 + 1);
+
+var myQuickPick = [Math.floor((Math.random()*48 + 1)), Math.floor((Math.random()*48 + 1)), Math.floor((Math.random()*48 + 1)), Math.floor((Math.random()*48 + 1)), Math.floor((Math.random()*48 + 1))];
+
+myQuickPick.sort(function(a, b){return a - b});
+
+document.write("The quick pick numbers are: " + myQuickPick + "<br/>");
+document.write("The lucky ball is: " + myLuckyBall + "<br/>");
+
+
+
+winningLottoString = prompt("Enter 5 winning numbers (1-48) separated by a space:");
+winningLuckyBall = prompt("Enter lucky ball number (1-18): ");
+
+var winningLottoArray = winningLottoString.split(" ");
+winningLottoArray.sort(function(a, b){return a - b});
+document.write("The winning numbers are: " + winningLottoArray + "<br/>");
+document.write("The lucky ball is: " + winningLuckyBall + "<br/>");
+
+
+for (let index = 0; index < winningLottoArray.length; index++) {
+    for (let myIndex = 0; myIndex < myQuickPick.length; myIndex++) {
+        if (winningLottoArray[index] == myQuickPick[myIndex]) {
+            numMatching = numMatching + 1;
+        }
+    }
+}
+
+document.write(numMatching + " numbers matched. ");
+
+if (numMatching == 0) {
+    if (winningLuckyBall == myLuckyBall) {
+        document.write("The lucky ball matched! You win $4! <br/>");
+    } else {
+        document.write("No lucky ball. Too bad. You get $0. <br/>");
+    }
+} else if (numMatching == 1){
+    if (winningLuckyBall == myLuckyBall) {
+        document.write("The lucky ball matched! You win $6! <br/>");
+    } else {
+        document.write("No lucky ball. Too bad. You get $0. <br/>");
+    }
+} else if (numMatching == 2){
+    if (winningLuckyBall == myLuckyBall) {
+        document.write("The lucky ball matched! You win $25! <br/>");
+    } else {
+        document.write("No lucky ball. You won $3. <br/>");
+    }
+} else if (numMatching == 3){
+    if (winningLuckyBall == myLuckyBall) {
+        document.write("The lucky ball matched! You win $150! <br/>");
+    } else {
+        document.write("No lucky ball. You won $20. <br/>");
+    }
+} else if (numMatching == 4){
+    if (winningLuckyBall == myLuckyBall) {
+        document.write("The lucky ball matched! You win $5,000! <br/>");
+    } else {
+        document.write("No lucky ball. You won $200. <br/>");
+    }
+} else if (numMatching == 5){
+    if (winningLuckyBall == myLuckyBall) {
+        document.write("The lucky ball matched! You win $7,000 a WEEK for LIFE! <br/>");
+    } else {
+        document.write("No lucky ball. You won $25,000 a YEAR for LIFE! <br/>");
+    }
+}
+
+</script>
+
+</html>
